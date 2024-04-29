@@ -1,0 +1,129 @@
+.sw-wpage-conatainer {
+    width: 50vw;
+    height: 100vh;
+    background-color: var(--sw-col-md-blue);
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.sw-wpage-conatainer-cont-box {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.sw-wp-heading-p {
+    font-size: 1.5em;
+}
+
+.sw-wp-crr-box-forecast-sec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+.sw-wp-page-img-sec img {
+    width: 400px;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.sw-wp-crr-box-forecast-des {
+    display: grid;
+    position: absolute;
+    grid-auto-flow: column;
+    width: 22em;
+}
+
+.sw-wp-fcast-des-b-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4em;
+    justify-self: start;
+}
+
+.sw-temp-para {
+    font-size: 2.5em;
+}
+
+.sw-wp-fcast-des-b-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    justify-self: end;
+}
+
+/* ************ */
+
+.sw-t-oview-box-cont-ul {
+    width: 400px;
+    display: flex;
+    flex-flow: wrap;
+    gap: 1em;
+}
+
+.sw-t-oview-box-cont {
+    list-style: none;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: max-content;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 1em;
+    padding: 1em 1.5em;
+    background-color: #d3d3d324;
+    border-radius: 15px;
+    width: 11em;
+}
+
+.sw-t-oview-box-cont-type {
+    color: #b1b1b1;
+    font-size: 0.8em;
+}
+
+.sw-t-oview-box-cont-value {
+    font-size: 1.4em;
+}
+
+
+@media screen and (max-width: 834px) {
+    .sw-wpage-conatainer {
+        width: 100vw;
+        height: unset;
+        min-height: 100vh;
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .sw-wp-page-img-sec img {
+        width: 95vw;
+    }
+
+    .sw-t-oview-box-cont-ul {
+        width: 95vw;
+        justify-content: center;
+    }
+
+    .sw-wp-crr-box-forecast-des{
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 394px) {
+    .sw-t-oview-box-cont {
+        width: 45vw;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .sw-t-oview-box-cont {
+        width: 90vw;
+    }
+}

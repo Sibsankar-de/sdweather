@@ -1,0 +1,10 @@
+.sw-home-conatainer{
+    display: flex;
+    width: 100%;
+}
+
+@media screen and (max-width: 834px){
+    .sw-home-conatainer{
+        flex-direction: column-reverse;
+    }
+}

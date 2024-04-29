@@ -1,24 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import { Home } from './components/pages/Home';
+
+import './css/root.css'
+import './css/utils.css'
+import './css/home.style.css'
+import './css/wpage.style.css'
+import './css/searchPage.style.css'
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'remixicon/fonts/remixicon.css';
+import { SearchPage } from './components/pages/searchPage';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        {window.innerWidth <= 834 && <Route path='/search' element={<SearchPage />} />}
+        <Route path='*' element={<Home />} />
+      </Routes>
+    </>
   );
 }
 

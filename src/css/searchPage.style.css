@@ -1,0 +1,130 @@
+.sw-search-page-conatainer {
+    width: 50vw;
+    height: 100vh;
+    background-color: var(--sw-col-d-blue);
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.sw-search-box {
+    display: grid;
+    align-items: center;
+}
+
+.sw-s-page-s-icon {
+    position: absolute;
+    margin-left: 0.7em;
+    margin-right: 0.7em;
+    font-size: 1.15em;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#search-bar {
+    background-color: #303c63;
+    border: none;
+    color: #d4d4d4;
+    width: 24em;
+    height: 2.9em;
+    padding-left: 2.6em;
+    padding-right: 2.6em;
+}
+
+#search-bar:focus {
+    box-shadow: 0 0 5px 0 #48588a;
+}
+
+#search-bar::placeholder {
+    color: #b1b1b1;
+}
+
+.sw-s-page-sl-box-ul {
+    display: flex;
+    flex-flow: wrap;
+    width: 25em;
+    margin-left: 1em;
+    gap: 1em;
+}
+
+.sw-s-page-sl-box {
+    list-style: none;
+    display: grid;
+    background-color: #303c63;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 1em;
+    width: 11em;
+    height: 9em;
+    overflow: hidden;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.sw-s-page-sl-box-clicked {
+    scale: 0.95;
+}
+
+.sw-s-w-box-des{
+    display: flex;
+    align-self: start;
+    gap: 1em;
+}
+
+
+@media screen and (max-width: 834px) {
+    .sw-search-page-conatainer {
+        width: 100vw;
+        height: unset;
+        min-height: 100vh;
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #search-bar {
+        width: 95vw;
+    }
+
+    .sw-s-page-sl-box-ul {
+        margin-left: 0;
+        width: 98vw;
+        justify-content: center;
+    }
+
+    .sw-s-page-sl-box {
+        width: 95vw;
+        height: fit-content;
+        gap: 0.5em;
+        justify-content: flex-start;
+    }
+
+    .sw-des-box-p{
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    /* #search-bar {
+        width: 95vw;
+    }
+
+    .sw-s-page-sl-box-ul {
+        margin-left: 0;
+        width: 98vw;
+    }
+
+    .sw-s-page-sl-box {
+        width: 95vw;
+        height: fit-content;
+        gap: 0.5em;
+        justify-content: flex-start;
+    } */
+
+    .sw-des-box-p{
+        width: 60vw;
+    }
+}
