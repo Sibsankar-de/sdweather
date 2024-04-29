@@ -7,21 +7,22 @@ import { useCurrentLocation } from "../utils/currentCityInfo";
 export const useWeatherData = (location) => {
     const env = process.env;
     const [data, setData] = useState(null)
+    const apiKey = process.env.REACT_APP_API_KEY;
+    const apiUrl = process.env.REACT_APP_WEATHER_API_URL;
     useEffect(() => {
         fetchData();
     }, [location])
-
     const fetchData = async () => {
         try {
-            const URL = `${env.REACT_APP_WEATHER_API_URL}/current.json?key=${env.REACT_APP_API_KEY} &q=${location}&aqi=yes`
+            const URL = `${apiUrl}/current.json?key=${apiKey} &q=${location}&aqi=yes`
 
-            const ASTROURL = `${env.REACT_APP_WEATHER_API_URL}/astronomy.json?key=${env.REACT_APP_API_KEY} &q=${location}&aqi=yes`
+            const ASTROURL = `${apiUrl}/astronomy.json?key=${apiKey} &q=${location}&aqi=yes`
             const response = await axios.get(URL)
             const astroRes = await axios.get(ASTROURL)
             response.data.current['astro'] = astroRes.data.astronomy.astro
             setData(response.data)
         } catch (error) {
-            console.error('Failed API Fetch ', error)
+            // console.error('Failed API Fetch ', error)
         }
     }
 
@@ -30,10 +31,13 @@ export const useWeatherData = (location) => {
 
 export const useCurrentLocationWeather = () => {
     const env = process.env;
+    const apiKey = process.env.REACT_APP_API_KEY;
+    const apiUrl = process.env.REACT_APP_WEATHER_API_URL;
     const [data, setData] = useState(null)
     useEffect(() => {
         fetchData();
     }, [])
+
 
     const fetchData = () => {
         if (navigator.geolocation) {
@@ -41,18 +45,18 @@ export const useCurrentLocationWeather = () => {
                 async (position) => {
                     const { latitude, longitude } = position.coords;
                     try {
-                        const URL = `${env.REACT_APP_WEATHER_API_URL}/current.json?key=${env.REACT_APP_API_KEY} &q=${latitude},${longitude}&aqi=yes`
-                        const ASTROURL = `${env.REACT_APP_WEATHER_API_URL}/astronomy.json?key=${env.REACT_APP_API_KEY} &q=${latitude},${longitude}&aqi=yes`
+                        const URL = `${apiUrl}/current.json?key=${apiKey} &q=${latitude},${longitude}&aqi=yes`
+                        const ASTROURL = `${apiUrl}/astronomy.json?key=${apiKey} &q=${latitude},${longitude}&aqi=yes`
                         const response = await axios.get(URL)
                         const astroRes = await axios.get(ASTROURL)
                         response.data.current['astro'] = astroRes.data.astronomy.astro
                         setData(response.data)
                     } catch (error) {
-                        console.error('Failed API Fetch ', error)
+                        // console.error('Failed API Fetch ', error)
                     }
                 },
                 (error) => {
-                    console.error('Error getting location', error);
+                    // console.error('Error getting location', error);
                 }
             );
         } else {
@@ -65,21 +69,25 @@ export const useCurrentLocationWeather = () => {
 
 export const useWatherByLocation = (latitude, longitude) => {
     const env = process.env;
+    const apiKey = process.env.REACT_APP_API_KEY;
+    const apiUrl = process.env.REACT_APP_WEATHER_API_URL;
     const [data, setData] = useState(null)
     useEffect(() => {
         fetchData();
     }, [latitude])
 
+
+
     const fetchData = async () => {
         try {
-            const URL = `${env.REACT_APP_WEATHER_API_URL}/current.json?key=${env.REACT_APP_API_KEY} &q=${latitude},${longitude}&aqi=yes`
-            const ASTROURL = `${env.REACT_APP_WEATHER_API_URL}/astronomy.json?key=${env.REACT_APP_API_KEY} &q=${latitude},${longitude}&aqi=yes`
+            const URL = `${apiUrl}/current.json?key=${apiKey} &q=${latitude},${longitude}&aqi=yes`
+            const ASTROURL = `${apiUrl}/astronomy.json?key=${apiKey} &q=${latitude},${longitude}&aqi=yes`
             const response = await axios.get(URL)
             const astroRes = await axios.get(ASTROURL)
             response.data.current['astro'] = astroRes.data.astronomy.astro
             setData(response.data)
         } catch (error) {
-            console.error('Failed API Fetch', error)
+            // console.error('Failed API Fetch', error)
         }
 
     };
@@ -89,14 +97,16 @@ export const useWatherByLocation = (latitude, longitude) => {
 
 export const useSearchLocationWeather = (keyward) => {
     const [data, setData] = useState(null)
+    const apiKey = process.env.REACT_APP_API_KEY;
+    const apiUrl = process.env.REACT_APP_WEATHER_API_URL;
     useEffect(() => {
         const fetchData = async () => {
-            const url = `${process.env.REACT_APP_WEATHER_API_URL}/search.json?key=${process.env.REACT_APP_API_KEY} &q=${keyward}&aqi=no`
+            const url = `${apiUrl}/search.json?key=${apiKey} &q=${keyward}&aqi=no`
             try {
                 const res = await axios.get(url);
                 setData(res.data)
             } catch (error) {
-                console.error('Error on search');
+                // console.error('Error on search');
             }
         }
         fetchData()

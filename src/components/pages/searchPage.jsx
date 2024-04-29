@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useWatherByLocation, useWeatherData } from '../api/weatherApi'
+import { useSearchLocationWeather, useWatherByLocation, useWeatherData } from '../api/weatherApi'
 import axios from 'axios'
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -8,20 +8,7 @@ export const SearchPage = () => {
     'mumbai', 'kolkata', 'chennai', 'bangalore', 'hyderabad', 'kanpur'
   ]
   const [input, setInput] = useState('')
-  const [searchData, setSearchData] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const url = `${process.env.REACT_APP_WEATHER_API_URL}/search.json?key=${process.env.REACT_APP_API_KEY} &q=${input}&aqi=no`
-      try {
-        const res = await axios.get(url);
-        setSearchData(res.data)
-        console.error(res.data);
-      } catch (error) {
-        console.error('Error on search');
-      }
-    }
-    fetchData()
-  }, [input])
+  const searchData = useSearchLocationWeather(input) || []
   const location = useLocation();
   const navigate = useNavigate();
   return (
@@ -29,7 +16,7 @@ export const SearchPage = () => {
       <div>
         <div className='fs-3 fw-bold mb-4 mt-2'>
           {window.innerWidth <= 834 && <span style={{ marginRight: '1em' }}><i className='bi bi-chevron-left' onClick={() => navigate(-1)}></i></span>}
-          {window.innerWidth <= 834?<span className='sw-col-mgreen'>Search</span>:<span><span className='sw-col-mgreen'>SD</span><span>weather</span></span>}
+          {window.innerWidth <= 834 ? <span className='sw-col-mgreen'>Search</span> : <span><span className='sw-col-mgreen'>SD</span><span>weather</span></span>}
         </div>
         <div className='sw-search-box'>
           <span className={`sw-s-page-s-icon ${input.length > 0 && 'sw-col-mgreen'}`}>
