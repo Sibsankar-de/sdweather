@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "echo %REACT_APP_API_KEY% && echo %REACT_APP_WEATHER_API_URL% && REACT_APP_API_KEY=%REACT_APP_API_KEY% REACT_APP_WEATHER_API_URL=%REACT_APP_WEATHER_API_URL% react-scripts build",
+    "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
