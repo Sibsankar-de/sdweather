@@ -7,8 +7,8 @@ import { useCurrentLocation } from "../utils/currentCityInfo";
 export const useWeatherData = (location) => {
     const env = process.env;
     const [data, setData] = useState(null)
-    const apiKey = process.env.REACT_APP_API_KEY;
-    const apiUrl = process.env.REACT_APP_WEATHER_API_URL;
+    const apiKey = '38eca7aa321849459ad71101242504';
+    const apiUrl = 'http://api.weatherapi.com/v1';
     useEffect(() => {
         fetchData();
     }, [location])
@@ -31,8 +31,8 @@ export const useWeatherData = (location) => {
 
 export const useCurrentLocationWeather = () => {
     const env = process.env;
-    const apiKey = process.env.REACT_APP_API_KEY;
-    const apiUrl = process.env.REACT_APP_WEATHER_API_URL;
+    const apiKey = '38eca7aa321849459ad71101242504';
+    const apiUrl = 'http://api.weatherapi.com/v1';
     const [data, setData] = useState(null)
     useEffect(() => {
         fetchData();
@@ -56,7 +56,7 @@ export const useCurrentLocationWeather = () => {
                     }
                 },
                 (error) => {
-                    // console.error('Error getting location', error);
+                    console.error('Error getting location', error);
                 }
             );
         } else {
@@ -69,8 +69,8 @@ export const useCurrentLocationWeather = () => {
 
 export const useWatherByLocation = (latitude, longitude) => {
     const env = process.env;
-    const apiKey = process.env.REACT_APP_API_KEY;
-    const apiUrl = process.env.REACT_APP_WEATHER_API_URL;
+    const apiKey = '38eca7aa321849459ad71101242504';
+    const apiUrl = 'http://api.weatherapi.com/v1';
     const [data, setData] = useState(null)
     useEffect(() => {
         fetchData();
@@ -97,8 +97,8 @@ export const useWatherByLocation = (latitude, longitude) => {
 
 export const useSearchLocationWeather = (keyward) => {
     const [data, setData] = useState(null)
-    const apiKey = process.env.REACT_APP_API_KEY;
-    const apiUrl = process.env.REACT_APP_WEATHER_API_URL;
+    const apiKey = '38eca7aa321849459ad71101242504';
+    const apiUrl = 'http://api.weatherapi.com/v1';
     useEffect(() => {
         const fetchData = async () => {
             const url = `${apiUrl}/search.json?key=${apiKey} &q=${keyward}&aqi=no`
